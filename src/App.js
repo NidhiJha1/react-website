@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Switch, Route,Redirect } from 'react-router-dom';
 import './App.css';
+import AppFaq from './components/faq';
+import AppGetInTouch from './components/getintouch';
+import AppHelp from './components/help';
+import AppHome from './components/home';
+import AppNavigation from './components/navigation';
+import AppProgram from './components/program';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <AppNavigation/>
+      <Switch>
+          <Route path='/' exact>
+                <AppHome/>
+          </Route>
+
+          <Route path='/help'>
+               <AppHelp/>
+          </Route>
+
+          <Route path='/faq'>
+                <AppFaq/>
+          </Route> 
+          
+          <Route path='/program'>
+              <AppProgram/>
+          </Route> 
+
+          <Route path='/getintouch'>
+              <AppGetInTouch/>
+          </Route>
+
+         <Route Path='*'>
+            <Redirect to='/'/>
+        </Route>
+      </Switch>  
     </div>
   );
 }
